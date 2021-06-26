@@ -28,10 +28,12 @@ pub use self::ring_buffer ::* ;
 mod async_read;
 mod async_write;
 mod endpoint;
+mod stream;
 
 pub use async_read ::*;
 pub use async_write::*;
 pub use endpoint   ::*;
+pub use stream     ::*;
 
 #[ cfg( feature = "sketchy" ) ] mod dictator;
 #[ cfg( feature = "sketchy" ) ] mod sketchy;
@@ -52,6 +54,7 @@ mod import
 		futures     :: { task::noop_waker                                 } ,
 		std         :: { io, pin::Pin, task::{ Context, Poll }            } ,
 	};
+            futures::{Stream},
 
 
 	#[ cfg(test) ]
